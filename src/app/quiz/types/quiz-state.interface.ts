@@ -1,3 +1,4 @@
+import { AnswerType } from 'src/app/quiz/types/answer.type';
 import { QuestionInterface } from 'src/app/quiz/types/question.interface';
 
 export interface QuizStateInterface {
@@ -5,4 +6,5 @@ export interface QuizStateInterface {
   currentQuestionIndex: number;
   showResults: boolean;
   correctAnswerCount: number;
+  answers: AnswerType[];
 }

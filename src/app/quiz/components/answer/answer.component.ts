@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-quiz-answer',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [],
 })
 export class AnswerComponent implements OnInit {
+  @Input('answerText') answerTextProp: string = '';
+
   constructor() {}
 
   ngOnInit(): void {}

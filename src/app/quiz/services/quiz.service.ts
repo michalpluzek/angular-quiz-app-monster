@@ -1,5 +1,7 @@
+import { AnswerType } from './../types/answer.type';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { QuestionInterface } from 'src/app/quiz/types/question.interface';
 
 import { QuizStateInterface } from 'src/app/quiz/types/quiz-state.interface';
 import mockData from '../data';
@@ -13,6 +15,7 @@ export class QuizService {
     currentQuestionIndex: 0,
     showResults: false,
     correctAnswerCount: 0,
+    answers: this.shuffleAnswers(mockData[0]),
   });
 
   constructor() {}
@@ -37,5 +40,20 @@ export class QuizService {
       currentQuestionIndex,
       showResults: newShowResults,
     });
+  }
+
+  shuffleAnswers(question: QuestionInterface): AnswerType[] {
+    const unshuffledAnswers = [
+      ...question.incorrectAnswers,
+      question.correctAnswer,
+    ];
+
+    return unshuffledAnswers
+      .map((unshuffledAnswer) => ({
+        sort: Math.random(),
+        value: unshuffledAnswer,
+      }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((el) => el.value);
   }
 }
