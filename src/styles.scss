@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  background: #ddd;
+}
+
+.next-button {
+  background: #000;
+  color: #fff;
+  width: 200px;
+  line-height: 40px;
+  font-size: 24px;
+  margin: 0 auto;
+  font-weight: 600;
+  padding: 14px 75px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+}
+
+.score {
+  background: #fff;
+  color: #000;
+  font-size: 18px;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+  font-weight: 600;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disable-answer {
+  pointer-events: none;
+}

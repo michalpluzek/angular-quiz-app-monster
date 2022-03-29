@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { QuizService } from 'src/app/quiz/services/quiz.service';
+
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class QuizComponent implements OnInit {
+  constructor(private quizService: QuizService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
