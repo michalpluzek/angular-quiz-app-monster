@@ -23,4 +23,8 @@ export class QuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  selectAnswer(answer: AnswerType): void {
+    this.quizService.checkAnswer(answer);
+  }
 }

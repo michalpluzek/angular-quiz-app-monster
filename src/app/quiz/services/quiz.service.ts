@@ -1,8 +1,8 @@
-import { AnswerType } from './../types/answer.type';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { QuestionInterface } from 'src/app/quiz/types/question.interface';
 
+import { AnswerType } from 'src/app/quiz/types/answer.type';
+import { QuestionInterface } from 'src/app/quiz/types/question.interface';
 import { QuizStateInterface } from 'src/app/quiz/types/quiz-state.interface';
 import mockData from '../data';
 
@@ -10,13 +10,15 @@ import mockData from '../data';
   providedIn: 'root',
 })
 export class QuizService {
-  state$ = new BehaviorSubject<QuizStateInterface>({
+  initialState: QuizStateInterface = {
     questions: mockData,
     currentQuestionIndex: 0,
     showResults: false,
     correctAnswerCount: 0,
     answers: this.shuffleAnswers(mockData[0]),
-  });
+    correctAnswer: mockData[0].correctAnswer,
+  };
+  state$ = new BehaviorSubject<QuizStateInterface>({ ...this.initialState });
 
   constructor() {}
 
@@ -30,16 +32,39 @@ export class QuizService {
 
   nextQuestion(): void {
     const state = this.getState();
-    const newShowResults =
+    const showResults =
       state.currentQuestionIndex === state.questions.length - 1;
-    const currentQuestionIndex = newShowResults
+    const currentQuestionIndex = showResults
       ? state.currentQuestionIndex
       : state.currentQuestionIndex + 1;
+    const answers = showResults
+      ? []
+      : this.shuffleAnswers(state.questions[currentQuestionIndex]);
+    const correctAnswer = showResults
+      ? null
+      : state.questions[currentQuestionIndex].correctAnswer;
 
     this.setState({
       currentQuestionIndex,
-      showResults: newShowResults,
+      showResults,
+      answers,
+      correctAnswer,
     });
+  }
+
+  restart(): void {
+    this.setState(this.initialState);
+  }
+
+  checkAnswer(answer: AnswerType): void {
+    const state = this.getState();
+
+    if (answer === state.correctAnswer) {
+      this.setState({
+        correctAnswerCount: ++state.correctAnswerCount,
+      });
+    }
+    this.nextQuestion();
   }
 
   shuffleAnswers(question: QuestionInterface): AnswerType[] {

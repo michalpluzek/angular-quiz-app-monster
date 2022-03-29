@@ -5,7 +5,7 @@ const data = [
     incorrectAnswers: ['Apollo 10', 'Apollo 9', 'Apollo 13'],
   },
   {
-    question: 'Who wrote &quot;Harry Potter&quot;?',
+    question: 'Who wrote "Harry Potter"?',
     correctAnswer: 'J.K. Rowling',
     incorrectAnswers: ['J.R.R. Tolkien', 'Terry Pratchett', 'Daniel Radcliffe'],
   },
@@ -16,7 +16,7 @@ const data = [
   },
   {
     question:
-      'Which one of these actors is said to be cut from the film &#039;E.T. the Extra-Terrestrial&#039;?',
+      'Which one of these actors is said to be cut from the film E.T. the Extra-Terrestrial?',
     correctAnswer: 'Harrison Ford',
     incorrectAnswers: [
       'Michael J. Fox',
@@ -25,12 +25,12 @@ const data = [
     ],
   },
   {
-    question: 'Who is the leader of Team Valor in Pok&eacute;mon Go?',
+    question: 'Who is the leader of Team Valor in Pokemon Go?',
     correctAnswer: 'Candela',
     incorrectAnswers: ['Willow', 'Blanche', 'Spark'],
   },
   {
-    question: 'Mirror&#039;s Edge Catalyst takes place in the City of...?',
+    question: 'Mirrors Edge Catalyst takes place in the City of...?',
     correctAnswer: 'Glass',
     incorrectAnswers: ['Mirrors', 'Purity', 'Diamonds'],
   },
@@ -51,7 +51,7 @@ const data = [
   },
   {
     question:
-      'In &quot;PAYDAY 2&quot;, what weapon has the highest base weapon damage on a per-shot basis?',
+      'In "PAYDAY 2", what weapon has the highest base weapon damage on a per-shot basis?',
     correctAnswer: 'HRL-7',
     incorrectAnswers: [
       'Heavy Crossbow',
